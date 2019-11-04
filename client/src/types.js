@@ -1,0 +1,1 @@
+export const LIKE_NEWS = 'LIKE_NEWS'

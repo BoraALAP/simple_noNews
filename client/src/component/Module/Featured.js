@@ -1,15 +1,11 @@
 import React from "react";
-import styled from "styled-components";
 import NewsCard from "../UI/NewsCard";
 
-const H2 = styled.h2`
-  
-`
 
 const Featured = props => {
   return (
     <div>
-      <H2>Featured</H2>
+      <h2>Featured</h2>
       <NewsCard featured
         data={props.data}
       />

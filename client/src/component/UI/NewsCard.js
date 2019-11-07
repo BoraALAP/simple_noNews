@@ -16,6 +16,7 @@ const Img = styled.div`
   background: ${props => `url(${props.source})`};
   background-size: cover;
   background-position: center center;
+  margin-bottom:16px;
 `;
 
 const BottomSection = styled.div`
@@ -26,7 +27,11 @@ const BottomSection = styled.div`
 
 const NewsCard = props => {
   const data = { ...props.data };
-  const source = { ...data.source };
+  const imgContainer = { ...data.multimedia };
+  const image = {...imgContainer[3]}
+
+  const source = {...data.geo_facet}
+  
   const [time, setTime] = useState({
     year: "",
     month: "",
@@ -35,7 +40,7 @@ const NewsCard = props => {
 
   useEffect(() => {
     const func = async () => {
-      const date = await new Date(props.data.publishedAt);
+      const date = await new Date(props.data.published_date);
       setTime({
         year: date.getFullYear().toString(),
         month: date.getMonth().toString(),
@@ -53,11 +58,11 @@ const NewsCard = props => {
       }}
     >
       <Container>
-        {props.featured ? <Img source={props.data.urlToImage} /> : ""}
+        {props.featured && <Img source={image.url} />}
         <h3>{data.title}</h3>
         <p>{data.description}</p>
         <BottomSection>
-          <small>{source.name}</small>
+          <small>{source[0]}</small>
           <small>
             {time.day} - {time.month} - {time.year}
           </small>

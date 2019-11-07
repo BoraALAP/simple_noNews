@@ -1,17 +1,10 @@
 import React from 'react'
 
 export const initialState = {
-  category: '',
+  category: 'world',
   sign: false,
   userId: '',
-  darkMode: false,
-  menuItem:{
-    search:false,
-    category:true,
-    news:true,
-    likes:false,
-    menu:false
-  }
+  darkMode: false
 }
 
 export const appReducer = (state, action) => {
@@ -19,7 +12,7 @@ export const appReducer = (state, action) => {
     case 'UPDATE_CATEGORY' :
       return {...state, category: action.value}
     case 'RESET_CATEGORY' :
-      return {...state, category: ''}
+      return {...state, category: 'world'}
     case 'SIGN_IN' :
       return {...state, sign: true, userId: action.id}
     case 'SIGN_OUT' :

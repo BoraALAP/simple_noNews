@@ -24,14 +24,14 @@ const Comments = props => {
       setComments([...filtered.reverse()]);
     };
     func();
-    return () => {};
+    
     // eslink-disabled-next-line
   }, [comments, id]);
 
   return (
     <Style>
       <CommentForm id={id} />
-      <h2>Comments</h2>
+      {comments.length > 0 && <h2>Comments</h2>}
       {comments.map(comment => (
         <CommentCard info={comment} key={comment._id} />
       ))}

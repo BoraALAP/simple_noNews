@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "demon": "nodemon server.js",
-    "start": "concurrently \"npm start --prefix client\" \"npm run demon\" "
+    "start": "concurrently \"npm start --prefix client\" \"npm run demon\""
   },
   "repository": {
     "type": "git",

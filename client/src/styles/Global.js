@@ -31,10 +31,9 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h3{
-    font-size:1.325em
+    font-size:1.25em
     line-height:1.6em
     font-weight:700;
-    margin-top:24px;
   }
 
   h6{
@@ -73,6 +72,23 @@ const GlobalStyle = createGlobalStyle`
     &.active{
       transform: translateY(0vh);
     }
+  }
+
+  .icon{
+    fill:${props => props.theme.color.main} ;
+  }
+
+  .selected{
+    .line{
+      display:grid;
+    }
+    
+  }
+
+  .navIcon{
+    fill:${props => props.theme.color.type};
+    height:18px;
+    width:18px;
   }
 `;
 

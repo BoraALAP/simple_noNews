@@ -24,6 +24,25 @@ const HeaderStyle = styled.header`
   box-sizing: border-box;
 `;
 
+const SwitchStyle = styled(Switch)`
+.MuiIconButton-label{
+  color:${props => props.theme.color.main}
+}
+
+.MuiSwitch-thumb{
+ box-shadow: ${props => props.theme.shadow_small}
+}
+
+.MuiSwitch-track{
+  background-color:${props => props.theme.color.type};
+}
+
+.MuiSwitch-colorSecondary.Mui-checked + .MuiSwitch-track{
+  background-color:${props => props.theme.color.type};
+}
+  
+`
+
 const Header = () => {
   const {store, dispatch} = useContext(Context)
 
@@ -39,7 +58,7 @@ const Header = () => {
       </Link>
       <FormGroup>
         <FormControlLabel
-          control={<Switch checked={store.darkMode} onChange={toggleChecked} />}
+          control={<SwitchStyle checked={store.darkMode} onChange={toggleChecked} />}
           label="Dark"
         />
       </FormGroup>

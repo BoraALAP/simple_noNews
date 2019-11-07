@@ -1,11 +1,15 @@
 const mongoose = require("mongoose");
 
 const LikesSchema = mongoose.Schema({
-  title:{
+  id: {
     type: String,
     required: true
   },
-  id: {
+  title: {
+    type: String,
+    required: true
+  },
+  published_date: {
     type: String,
     required: true
   },

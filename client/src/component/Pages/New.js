@@ -23,17 +23,37 @@ const BottomSection = styled.div`
 
 const New = props => {
   const [item, setItem] = useState({});
-  const source = { ...item.source };
+  const source = { ...item.geo_facet };
+  const [id, setId] = useState({});
   const [time, setTime] = useState({
     year: "",
     month: "",
     day: ""
   });
+  const imageUrl = { ...item.multimedia };
+  const img = { ...imageUrl[4] };
+
+  const findcode = string => {
+    var n = string.split("/");
+    setId(n[n.length - 1])
+  };
+
+  
+  
+
+  useEffect(() => {
+    const string = item.short_url;
+    if (string !== undefined) {
+      findcode(string);
+    }
+  }, [item])
+  
+
 
   useEffect(() => {
     const func = async () => {
       setItem({ ...props.location.state });
-      const date = await new Date(props.location.state.publishedAt);
+      const date = await new Date(props.location.state.published_date);
       setTime({
         year: date.getFullYear().toString(),
         month: date.getMonth().toString(),
@@ -43,20 +63,22 @@ const New = props => {
     func();
   }, [props.location.state]);
 
+ 
+
   return (
     <Container>
-      <ImageContainer url={item.urlToImage} />
+      <ImageContainer url={img.url} id={id} published_date={item.published_date} title={item.title} />
       <Content>
         <h3>{item.title}</h3>
         <BottomSection>
-          <small>{source.name}</small>
+          <small>{source[0]}</small>
           <small>
             {time.day} - {time.month} - {time.year}
           </small>
         </BottomSection>
-        <p>{item.content}</p>
-        <OutButton link={item.url}>Go to Article</OutButton>
-        <Comments id={item.url} />
+        <p>{item.abstract}</p>
+        <OutButton link={`https://nyti.ms/${id}`}>Go to Article</OutButton>
+        <Comments id={id} />
       </Content>
     </Container>
   );

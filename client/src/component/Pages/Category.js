@@ -1,36 +1,61 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-import PopupsContainer from "./PopupsContainer";
 
 import { Context } from "../../data/store";
+import { Button } from "../UI/Button";
 
-const Button = styled.button`
-  width: 100%;
-  padding: 16px 24px;
+const Container = styled.main`
+  margin: 96px 0px 48px; 
+  padding 24px;
 `;
 
 const Category = props => {
   const { dispatch } = useContext(Context);
 
-  const categories = ["Science", "Finance", "Technology", "Politics", "Stock"];
+  const categories = [
+    "arts",
+    "automobiles",
+    "books",
+    "business",
+    "fashion",
+    "food",
+    "health",
+    "home",
+    "insider",
+    "magazine",
+    "movies",
+    "national",
+    "nyregion",
+    "obituaries",
+    "opinion",
+    "politics",
+    "realestate",
+    "science",
+    "sports",
+    "sundayreview",
+    "technology",
+    "theater",
+    "tmagazine",
+    "travel",
+    "upshot",
+    "world"
+  ];
 
   return (
-    <PopupsContainer show={props.active}>
-      <h1>Categories:</h1>
+    <Container>
+      <h2>Categories:</h2>
       {categories.map((category, index) => (
-        <Button
-          key={index}
-          onClick={e => {
-            dispatch({
-              type: "UPDATE_CATEGORY",
-              value: e.currentTarget.textContent.toLowerCase()
-            });
-          }}
-        >
-          {category}
+        <Link to="/" key={index}>
+        <Button key={index} onClick={() => dispatch({
+          type: "UPDATE_CATEGORY",
+          value: category
+        })}>
+          {category.charAt(0).toUpperCase() + category.slice(1)}
         </Button>
+        </Link>
       ))}
-    </PopupsContainer>
+    </Container>
   );
 };
 

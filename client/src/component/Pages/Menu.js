@@ -5,7 +5,7 @@ import PopupsContainer from "./PopupsContainer";
 const Menu = (props) => {
   return (
     <PopupsContainer show={props.active}>
-      <h1>Menu</h1>
+      <h2>Menu</h2>
     </PopupsContainer> 
   );
 };

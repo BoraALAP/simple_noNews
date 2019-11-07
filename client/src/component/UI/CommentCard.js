@@ -29,6 +29,7 @@ const CommentCard = props => {
       });
     };
     func();
+    
   }, [comment.date, props.info]);
 
   return (

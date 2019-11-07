@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect
+  // Redirect
 } from "react-router-dom";
 
 import "firebase/auth";
@@ -28,7 +28,7 @@ import Likes from "./component/Pages/Likes";
 
 function App() {
   const [store, dispatch] = useReducer(appReducer, initialState);
-  const [activePopup, setActivePopup] = useState({})
+  const [activePopup, setActivePopup] = useState({});
 
   const auth = () => {
     firebase.auth().onAuthStateChanged(user => {
@@ -50,34 +50,31 @@ function App() {
       });
   };
 
-  const PrivateRoute = ({ component: Component, ...rest }) => {
-
-    return (
-      <Route
-        {...rest}
-        render={props =>
-          store.sign ? (
-            <Component {...props} />
-          ) : (
-            <Redirect
-              to={{ pathname: "/login", state: { from: props.location } }}
-            />
-          )
-        }
-      />
-    );
-  };
+  // const PrivateRoute = ({ component: Component, ...rest }) => {
+  //   return (
+  //     <Route
+  //       {...rest}
+  //       render={props =>
+  //         store.sign ? (
+  //           <Component {...props} />
+  //         ) : (
+  //           <Redirect
+  //             to={{ pathname: "/login", state: { from: props.location } }}
+  //           />
+  //         )
+  //       }
+  //     />
+  //   );
+  // };
 
   useEffect(() => {
     auth();
     data();
-    
   }, []);
 
-  const handlePopup = (e) => {
-    setActivePopup(e.currentTarget.getAttribute('name'))
-  }
-
+  const handlePopup = e => {
+    setActivePopup(e.currentTarget.getAttribute("name"));
+  };
 
   return (
     <Router>
@@ -87,17 +84,16 @@ function App() {
             <GlobalStyle />
             <Header />
             <Switch>
-              <Route path="/" render={props => store.sign ? <News /> : <Login />} exact />
-              <Route path="/login" component={Login} exact/>
-              <Route path="/category" component={Category} exact/>
-              <Route path="/likes" component={Likes} exact/>
-              <Route path="/search" component={Search} exact/>
+              {/* <Route path="/" render={props => store.sign ? <News /> : <Login />} exact /> */}
+              <Route path="/" component={News} exact />
+              <Route path="/login" component={Login} exact />
+              <Route path="/category" component={Category} exact />
+              <Route path="/likes" component={Likes} exact />
+              <Route path="/search" component={Search} exact />
               <Route path="/news/:id" component={New} />
-              <Route path="/news" component={News} />
-              
             </Switch>
-            <Navigation clicks={handlePopup}/>
-            <Popups active={activePopup}/>
+            <Navigation clicks={handlePopup} />
+            <Popups active={activePopup} />
           </div>
         </ThemeProvider>
       </Context.Provider>

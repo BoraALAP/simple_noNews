@@ -14,8 +14,9 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     const link = new Likes({
+      id: req.body.id,
       title: req.body.title,
-      id: req.body.id
+      published_date: req.body.published_date,
     });
 
     const liked = await link.save();

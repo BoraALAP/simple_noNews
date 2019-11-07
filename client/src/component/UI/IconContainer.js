@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const Icon = styled.img`
+const Icon = styled.div`
   max-height: 1.25em;
   max-width: 1.25em;
   display: grid;

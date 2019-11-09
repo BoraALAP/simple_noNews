@@ -41,7 +41,7 @@ const NavButton = props => {
       onClick={props.handleClick}
       name={props.name}
     >
-      <NavLink exact to={props.to} activeClassName="selected">
+      <NavLink to={props.to} activeClassName="selected">
         <Icon alt={props.alt} active={props.show}>
           {props.children}
         </Icon>

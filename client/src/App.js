@@ -85,7 +85,7 @@ function App() {
             <Header />
             <Switch>
               {/* <Route path="/" render={props => store.sign ? <News /> : <Login />} exact /> */}
-              <Route path="/" component={News} exact />
+              <Route path="/news" component={News} exact/>
               <Route path="/login" component={Login} exact />
               <Route path="/category" component={Category} exact />
               <Route path="/likes" component={Likes} exact />

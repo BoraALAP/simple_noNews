@@ -15,7 +15,8 @@ router.post("/", async (req, res) => {
   try {
     const post = new Comment({
       text: req.body.text,
-      id: req.body.id
+      id: req.body.id,
+      articleId: req.body.articleId
     });
     const posted = await post.save();
     res.json(posted);

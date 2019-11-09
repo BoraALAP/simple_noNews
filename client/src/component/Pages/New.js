@@ -35,20 +35,15 @@ const New = props => {
 
   const findcode = string => {
     var n = string.split("/");
-    setId(n[n.length - 1])
+    setId(n[n.length - 1]);
   };
-
-  
-  
 
   useEffect(() => {
     const string = item.short_url;
     if (string !== undefined) {
       findcode(string);
     }
-  }, [item])
-  
-
+  }, [item]);
 
   useEffect(() => {
     const func = async () => {
@@ -63,11 +58,14 @@ const New = props => {
     func();
   }, [props.location.state]);
 
- 
-
   return (
     <Container>
-      <ImageContainer url={img.url} id={id} published_date={item.published_date} title={item.title} />
+      <ImageContainer
+        url={img.url}
+        id={id}
+        published_date={item.published_date}
+        title={item.title}
+      />
       <Content>
         <h3>{item.title}</h3>
         <BottomSection>

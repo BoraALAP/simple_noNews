@@ -20,11 +20,10 @@ const Comments = props => {
   useEffect(() => {
     const func = async () => {
       const res = await axios.get("http://localhost:8000/api/comments");
-      const filtered = await res.data.filter(comment => comment.id === id);
-      setComments([...filtered.reverse()]);
+      const filtered = await res.data.filter(comment => comment.articleId === id).reverse()
+      setComments([...filtered])
     };
-    func();
-    
+    func()
     // eslink-disabled-next-line
   }, [comments, id]);
 
@@ -33,7 +32,7 @@ const Comments = props => {
       <CommentForm id={id} />
       {comments.length > 0 && <h2>Comments</h2>}
       {comments.map(comment => (
-        <CommentCard info={comment} key={comment._id} />
+        <CommentCard info={comment} key={comment.id} />
       ))}
     </Style>
   );

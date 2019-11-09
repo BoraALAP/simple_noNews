@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Submit } from "../UI/Button";
 import styled from "styled-components";
+import uuid from 'uuid'
 
 import axios from "axios";
 
@@ -25,7 +26,8 @@ const CommentForm = props => {
     e.preventDefault();
     await axios.post("http://localhost:8000/api/comments", {
       text: form,
-      id: props.id
+      articleId: props.id,
+      id: uuid.v4()
     });
     setForm("");
   };

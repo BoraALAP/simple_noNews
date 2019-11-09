@@ -48,7 +48,7 @@ const Navigation = props => {
       <NavButton to="/category">
         <CategoryIcon class="navIcon" />
       </NavButton>
-      <NavButton to="/">
+      <NavButton to="/news">
         <NewsIcon class="navIcon" />
       </NavButton>
       <NavButton to="/likes">

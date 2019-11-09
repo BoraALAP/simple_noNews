@@ -46,7 +46,7 @@ const Category = props => {
     <Container>
       <h2>Categories:</h2>
       {categories.map((category, index) => (
-        <Link to="/" key={index}>
+        <Link to="/news" key={index}>
         <Button key={index} onClick={() => dispatch({
           type: "UPDATE_CATEGORY",
           value: category

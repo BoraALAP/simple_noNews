@@ -36,31 +36,35 @@ const Circle = styled.button`
 
 const ImageContainer = props => {
   const [like, setLike] = useState(false);
+  const data = {...props.data}
   const likeIt = async () => {
     await setLike(!like);
     if (!like) {
       await axios.post("http://localhost:8000/api/likes", {
-        id: props.id,
-        title: props.title,
-        published_date: props.published_date
+        id: data.id,
+        title: data.title,
+        published_date: data.published_date,
+        abstract: data.abstract,
+        multimedia: data.multimedia,
+        short_url: data.short_url
       });
     } else {
-      await axios.delete(`http://localhost:8000/api/likes/${props.id}`);
+      await axios.delete(`http://localhost:8000/api/likes/${data.id}`);
     }
   };
 
   useEffect(() => {
     const isItLiked = async () => {
       const res = await axios.get("http://localhost:8000/api/likes");
-      const data = res.data;
-      data.map(item => {
-        if (item.id === props.id) {
+      const result = res.data;
+      result.map(item => {
+        if (item.id === data.id) {
           setLike(true);
-        } 
+        }         
       });
     };
     isItLiked();
-  }, [props.id]);
+  }, [data.id]);
   
   return (
     <Container>

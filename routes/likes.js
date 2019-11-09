@@ -17,6 +17,10 @@ router.post("/", async (req, res) => {
       id: req.body.id,
       title: req.body.title,
       published_date: req.body.published_date,
+      abstract: req.body.abstract,
+      multimedia: req.body.multimedia,
+      date:req.body.date,
+      short_url:req.body.short_url
     });
 
     const liked = await link.save();

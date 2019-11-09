@@ -10,6 +10,7 @@ const Container = styled.main`
 
 const Likes = props => {
   const [likes, setLikes] = useState([]);
+  const [selected, setSelected] = useState({})
   useEffect(() => {
     const func = async () => {
       const res = await axios.get("http://localhost:8000/api/likes");
@@ -22,7 +23,7 @@ const Likes = props => {
     <Container>
       <h2>Likes</h2>
       {likes.map((like, index) => (
-        <NewsCard data={like} key={index} />
+        <NewsCard data={like} key={index}/>
       ))}
     </Container>
   );

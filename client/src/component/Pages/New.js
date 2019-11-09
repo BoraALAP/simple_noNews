@@ -58,13 +58,14 @@ const New = props => {
     func();
   }, [props.location.state]);
 
+  console.log(props.location.state);
+  
   return (
     <Container>
       <ImageContainer
         url={img.url}
         id={id}
-        published_date={item.published_date}
-        title={item.title}
+        data={item}
       />
       <Content>
         <h3>{item.title}</h3>

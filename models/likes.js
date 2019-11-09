@@ -9,6 +9,18 @@ const LikesSchema = mongoose.Schema({
     type: String,
     required: true
   },
+  abstract: {
+    type: String,
+    required: true
+  },
+  multimedia: {
+    type: Array,
+    required: true
+  },
+  short_url: {
+    type: String,
+    required: true
+  },
   published_date: {
     type: String,
     required: true
